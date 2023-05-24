@@ -1,39 +1,32 @@
 import streamlit as st
-from datetime import time, datetime
 
-st.header('st.slider')
+# Homepage
+def homepage():
+    st.title("Welcome to our new startup!")
+    st.write("We specialize in talking with specialists by GPT.")
+    st.write("Check out our About and Contact pages to learn more!")
 
-# 样例 1
+# About page
+def about():
+    st.title("About Us")
+    st.write("Our startup was founded in 2021 with the goal of revolutionizing the way specialists communicate with GPT.")
+    st.write("We believe that our technology has the potential to transform the industry and improve the lives of millions of people.")
 
-st.subheader('Slider')
+# Contact page
+def contact():
+    st.title("Contact Us")
+    st.write("If you have any questions or would like to learn more about our startup, please contact us at:")
+    st.write("- Email: info@ourstartup.com")
+    st.write("- Phone: 555-1234")
 
-age = st.slider('How old are you?', 0, 130, 25)
-st.write("I'm ", age, 'years old')
+# Page Navigation
+pages = {
+    "Homepage": homepage,
+    "About": about,
+    "Contact": contact
+}
 
-# 样例 2
-
-st.subheader('Range slider')
-
-values = st.slider(
-     'Select a range of values',
-     0.0, 100.0, (25.0, 75.0))
-st.write('Values:', values)
-
-# 样例 3
-
-st.subheader('Range time slider')
-
-appointment = st.slider(
-     "Schedule your appointment:",
-     value=(time(11, 30), time(12, 45)))
-st.write("You're scheduled for:", appointment)
-
-# 样例 4
-
-st.subheader('Datetime slider')
-
-start_time = st.slider(
-     "When do you start?",
-     value=datetime(2020, 1, 1, 9, 30),
-     format="MM/DD/YY - hh:mm")
-st.write("Start time:", start_time)
+st.sidebar.title("Navigation")
+selection = st.sidebar.radio("Go to", list(pages.keys()))
+page = pages[selection]
+page()
