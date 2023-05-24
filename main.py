@@ -6,7 +6,7 @@ openai.api_key = "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"
 # Define the function to generate responses using GPT-3
 def generate_response(prompt):
     response = openai.Completion.create(
-        model="text-davinci-003",
+        engine="text-davinci-002",
         prompt=prompt,
         max_tokens=1024,
         n=1,
